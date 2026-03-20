@@ -91,9 +91,25 @@ const Menu = () => {
         </ul>
         <hr />
         <div className="profile" onClick={handleProfileClick}>
-          <div className="avatar">ZU</div>
+          <div className="avatar"> ZU</div>
           <p className="username">USERID</p>
-        </div>
+
+                {isProfileDropdownOpen && (
+            <div className="profile-dropdown">
+              <h4>Zerodha User</h4>
+              <p>My Profile</p>
+              <p>console</p>
+              <p>coin</p>
+              <p>support</p>
+              <p>Invite friend</p>
+              <p>tour kit</p>
+              <p>keyboard shortcuts</p>
+              <p>help</p>
+              <p>Logout</p>
+            </div>
+          )}
+
+     </div>
       </div>
     </div>
   );

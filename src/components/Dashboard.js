@@ -11,10 +11,16 @@ import Summary from "./Summary";
 import WatchList from "./WatchList";
 import { GeneralContextProvider } from "./GeneralContext";
 
+// import UserDropdown from "./userid";
+
+
+
 const Dashboard = () => {
   return (
     <div className="dashboard-container">
+       {/* <UserDropdown /> */}
       <GeneralContextProvider>
+       
         <WatchList />
       </GeneralContextProvider>
       <div className="content">
@@ -25,6 +31,7 @@ const Dashboard = () => {
           <Route path="/positions" element={<Positions />} />
           <Route path="/funds" element={<Funds />} />
           <Route path="/apps" element={<Apps />} />
+        
         </Routes>
       </div>
     </div>
