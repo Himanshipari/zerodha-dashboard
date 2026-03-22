@@ -10,7 +10,7 @@ const UserDropdown = () => {
   const handleLogout = async () => {
     try {
       // Backend api call for logout
-      const { data } = await axios.get("http://localhost:3000/logout", {
+      const { data } = await axios.get("https://zerodha-backend-nu2q.onrender.com/logout", {
         withCredentials: true,
       });
 

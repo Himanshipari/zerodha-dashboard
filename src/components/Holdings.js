@@ -8,7 +8,7 @@ const Holdings = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/allHoldings")
+      .get("https://zerodha-backend-nu2q.onrender.com/allHoldings")
       .then((res) => {
         console.log("API DATA:", res.data);
         setAllHoldings(res.data);
