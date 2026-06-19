@@ -313,8 +313,8 @@ const Menu = () => {
     
     // Laptop par local page aur internet par aapka sahi login frontend link
     window.location.href = window.location.hostname === "localhost"
-      ? "http://localhost:3000/login"
-      : "https://onrender.com"; 
+      ?  "http://localhost:3000/signup"
+    : "https://vercel.app"; 
   };
 
   const menuClass = "menu";
