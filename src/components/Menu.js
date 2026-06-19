@@ -442,14 +442,10 @@ const Menu = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     
-    // 🌟 Laptop par localhost aur live hone par automatic sahi signup URL banayega
-    if (window.location.hostname === "localhost") {
-      window.location.href = "http://localhost:3000/signup";
-    } else {
-      // Yeh logic automatic 'dashboard' word ko 'frontend' se swap karke 'vercel.app' par redirect karega
-      const liveFrontend = window.location.origin.replace("-dashboard", "-frontend") + "/signup";
-      window.location.href = liveFrontend;
-    }
+    // 🌟 BILKUL DIRECT LINKS: Isme koi dynamic calculation nahi hai, bilkul direct redirect karega
+    window.location.href = window.location.hostname === "localhost"
+      ? "http://localhost:3000/signup"
+      : "https://vercel.app"; 
   };
 
   const menuClass = "menu";
@@ -495,4 +491,5 @@ const Menu = () => {
 };
 
 export default Menu;
+
 
