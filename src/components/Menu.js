@@ -173,44 +173,60 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-// Menu component jisme baaki options aur functional logout hai
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
 
-  // Logout handler to remove token and redirect
+  const handleMenuClick = (index) => setSelectedMenu(index);
+  const handleProfileClick = () => setIsProfileDropdownOpen(!isProfileDropdownOpen);
+
+  // Logout functionality: Redirects to the login page on the live frontend
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.href = "https://onrender.com";
   };
 
-  // ... (rest of your state management and structure)
+  const menuClass = "menu";
+  const activeMenuClass = "menu selected";
 
   return (
     <div className="menu-container">
-      {/* ... logo, menu items, profile avatar ... */}
-      
-      {isProfileDropdownOpen && (
-        <div className="profile-dropdown">
-          {/* Purane saare options wapas hain */}
-          <p>My Profile</p>
-          <p>console</p>
-          <p>coin</p>
-          <p>support</p>
-          <p>Invite friend</p>
-          <p>tour kit</p>
-          <p>keyboard shortcuts</p>
-          <p>help</p>
-          {/* Functional Logout Button */}
-          <p onClick={handleLogout} style={{ color: "red", fontWeight: "bold", cursor: "pointer" }}>
-            Logout
-          </p>
+      <img src="logo.png" alt="menu item" style={{ width: "50px" }} />
+      <div className="menus">
+        <ul>
+          {["Dashboard", "Orders", "Holdings", "Positions", "Funds", "Apps"].map((item, index) => (
+            <li key={item}>
+              <Link style={{ textDecoration: "none" }} to={`/${item.toLowerCase()}`} onClick={() => handleMenuClick(index)}>
+                <p className={selectedMenu === index ? activeMenuClass : menuClass}>{item}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <hr />
+        <div className="profile" onClick={handleProfileClick} style={{ cursor: "pointer" }}>
+          <div className="avatar"> ZU</div>
+          <p className="username">USERID</p>
+          {isProfileDropdownOpen && (
+            <div className="profile-dropdown">
+              <h4>Zerodha User</h4>
+              <p>My Profile</p>
+              <p>console</p>
+              <p>coin</p>
+              <p>support</p>
+              <p>Invite friend</p>
+              <p>tour kit</p>
+              <p>keyboard shortcuts</p>
+              <p>help</p>
+              {/* Functional logout button */}
+              <p onClick={handleLogout} style={{ color: "red", fontWeight: "bold", cursor: "pointer" }}>
+                Logout
+              </p>
+            </div>
+          )}
         </div>
-      )}
-      {/* ... other components ... */}
+      </div>
     </div>
   );
 };
 
 export default Menu;
-
