@@ -439,13 +439,12 @@ const Menu = () => {
   const handleMenuClick = (index) => setSelectedMenu(index);
   const handleProfileClick = () => setIsProfileDropdownOpen(!isProfileDropdownOpen);
 
+  // Logout Function: Token delete karke seedha aapke localhost 3000 par redirect karega
   const handleLogout = () => {
     localStorage.removeItem("token");
     
-    // 🌟 BILKUL DIRECT LINKS: Isme koi dynamic calculation nahi hai, bilkul direct redirect karega
-    window.location.href = window.location.hostname === "localhost"
-      ? "http://localhost:3000/signup"
-      : "https://vercel.app"; 
+    // Chahe aap local machine par ho ya live Render par, yeh hamesha localhost 3000 par hi bhejega
+    window.location.href = "http://localhost:3000/signup"; 
   };
 
   const menuClass = "menu";
@@ -491,5 +490,3 @@ const Menu = () => {
 };
 
 export default Menu;
-
-
