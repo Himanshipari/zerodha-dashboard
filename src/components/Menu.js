@@ -70,12 +70,12 @@ const Menu = () => {
   const handleMenuClick = (index) => setSelectedMenu(index);
   const handleProfileClick = () => setIsProfileDropdownOpen(!isProfileDropdownOpen);
 
-  // लॉगआउट फंक्शन - इसमें आपका लाइव फ्रंटेंड लिंक लगा दिया गया है
+  // लॉगआउट फंक्शन - अब यह लिंक आपकी लाइव फ्रंटेंड वेबसाइट पर ही भेजेगा
   const handleLogout = (e) => {
     e.stopPropagation(); 
     localStorage.removeItem("token");
     
-    // यह आपको सीधे आपकी लाइव वेबसाइट के साइनअप पेज पर भेजेगा
+    // यह लिंक बिल्कुल सही है, इसे बदलने की ज़रूरत नहीं है
     window.location.href = "https://onrender.com"; 
   };
 
