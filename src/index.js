@@ -158,7 +158,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Apps from './Apps'; // आपके फोल्डर में Apps.js है, इसलिए इसे Apps रखा है
+import Apps from './Apps'; 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -166,3 +166,4 @@ root.render(
     <Apps />
   </React.StrictMode>
 );
+
