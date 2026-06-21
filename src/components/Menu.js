@@ -76,7 +76,7 @@ const Menu = () => {
     localStorage.removeItem("token");
     
     // यह लिंक बिल्कुल सही है, इसे बदलने की ज़रूरत नहीं है
-    window.location.href = "https://zerodha-frontend-2q4h.onrender.com/signup"; 
+    window.location.href = "https://zerodha-frontend-2q4h.onrender.com"; 
   };
 
   const menuClass = "menu";
