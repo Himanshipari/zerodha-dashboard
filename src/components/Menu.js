@@ -237,7 +237,7 @@ const Menu = () => {
     e.stopPropagation();
     localStorage.removeItem("token");
 
-    alert("Logout clicked");
+    window.location.href = "https://zerodha-frontend-2q4h.onrender.com";
   };
 
   const menuClass = "menu";
