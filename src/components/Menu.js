@@ -60,6 +60,69 @@
 
 // export default Menu;
 
+// import React, { useState } from "react";
+// import { Link } from "react-router-dom";
+
+// const Menu = () => {
+//   const [selectedMenu, setSelectedMenu] = useState(0);
+//   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+
+//   const handleMenuClick = (index) => setSelectedMenu(index);
+//   const handleProfileClick = () => setIsProfileDropdownOpen(!isProfileDropdownOpen);
+
+//   // लॉगआउट फंक्शन - अब यह लिंक आपकी लाइव फ्रंटेंड वेबसाइट पर ही भेजेगा
+//   const handleLogout = (e) => {
+//     e.stopPropagation(); 
+//     localStorage.removeItem("token");
+    
+//     // यह लिंक बिल्कुल सही है, इसे बदलने की ज़रूरत नहीं है
+//     window.location.href = "https:onrender.com"; 
+//   };
+
+//   const menuClass = "menu";
+//   const activeMenuClass = "menu selected";
+
+//   return (
+//     <div className="menu-container">
+//       <img src="logo.png" alt="menu item" style={{ width: "50px" }} />
+//       <div className="menus">
+//         <ul>
+//           {["Dashboard", "Orders", "Holdings", "Positions", "Funds", "Apps"].map((item, index) => (
+//             <li key={item}>
+//               <Link style={{ textDecoration: "none" }} to={`/${item.toLowerCase()}`} onClick={() => handleMenuClick(index)}>
+//                 <p className={selectedMenu === index ? activeMenuClass : menuClass}>{item}</p>
+//               </Link>
+//             </li>
+//           ))}
+//         </ul>
+//         <hr />
+//         <div className="profile" onClick={handleProfileClick} style={{ cursor: "pointer" }}>
+//           <div className="avatar"> ZU</div>
+//           <p className="username">USERID</p>
+//           {isProfileDropdownOpen && (
+//             <div className="profile-dropdown">
+//               <h4>Zerodha User</h4>
+//               <p>My Profile</p>
+//               <p>console</p>
+//               <p>coin</p>
+//               <p>support</p>
+//               <p>Invite friend</p>
+//               <p>tour kit</p>
+//               <p>keyboard shortcuts</p>
+//               <p>help</p>
+//               <p onClick={handleLogout} style={{ color: "red", fontWeight: "bold", cursor: "pointer" }}>
+//                 Logout
+//               </p>
+//             </div>
+//           )}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Menu;
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -68,15 +131,17 @@ const Menu = () => {
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
 
   const handleMenuClick = (index) => setSelectedMenu(index);
-  const handleProfileClick = () => setIsProfileDropdownOpen(!isProfileDropdownOpen);
+  const handleProfileClick = () =>
+    setIsProfileDropdownOpen(!isProfileDropdownOpen);
 
-  // लॉगआउट फंक्शन - अब यह लिंक आपकी लाइव फ्रंटेंड वेबसाइट पर ही भेजेगा
   const handleLogout = (e) => {
-    e.stopPropagation(); 
+    e.stopPropagation();
+
+    // Token remove karo
     localStorage.removeItem("token");
-    
-    // यह लिंक बिल्कुल सही है, इसे बदलने की ज़रूरत नहीं है
-    window.location.href = "https:onrender.com"; 
+
+    // Login page par redirect karo
+    window.location.href = "/login";
   };
 
   const menuClass = "menu";
@@ -85,20 +150,45 @@ const Menu = () => {
   return (
     <div className="menu-container">
       <img src="logo.png" alt="menu item" style={{ width: "50px" }} />
+
       <div className="menus">
         <ul>
-          {["Dashboard", "Orders", "Holdings", "Positions", "Funds", "Apps"].map((item, index) => (
+          {[
+            "Dashboard",
+            "Orders",
+            "Holdings",
+            "Positions",
+            "Funds",
+            "Apps",
+          ].map((item, index) => (
             <li key={item}>
-              <Link style={{ textDecoration: "none" }} to={`/${item.toLowerCase()}`} onClick={() => handleMenuClick(index)}>
-                <p className={selectedMenu === index ? activeMenuClass : menuClass}>{item}</p>
+              <Link
+                style={{ textDecoration: "none" }}
+                to={`/${item.toLowerCase()}`}
+                onClick={() => handleMenuClick(index)}
+              >
+                <p
+                  className={
+                    selectedMenu === index ? activeMenuClass : menuClass
+                  }
+                >
+                  {item}
+                </p>
               </Link>
             </li>
           ))}
         </ul>
+
         <hr />
-        <div className="profile" onClick={handleProfileClick} style={{ cursor: "pointer" }}>
-          <div className="avatar"> ZU</div>
+
+        <div
+          className="profile"
+          onClick={handleProfileClick}
+          style={{ cursor: "pointer" }}
+        >
+          <div className="avatar">ZU</div>
           <p className="username">USERID</p>
+
           {isProfileDropdownOpen && (
             <div className="profile-dropdown">
               <h4>Zerodha User</h4>
@@ -110,7 +200,15 @@ const Menu = () => {
               <p>tour kit</p>
               <p>keyboard shortcuts</p>
               <p>help</p>
-              <p onClick={handleLogout} style={{ color: "red", fontWeight: "bold", cursor: "pointer" }}>
+
+              <p
+                onClick={handleLogout}
+                style={{
+                  color: "red",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}
+              >
                 Logout
               </p>
             </div>
